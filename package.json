@@ -1,10 +1,11 @@
 {
   "name": "rollup-plugin-ng-annotate",
-  "version": "0.1.0",
-  "description": "adds and removes AngularJS dependency injection annotations based on ng-annotate.",
+  "version": "0.2.0",
+  "description": "adds and removes AngularJS dependency injection annotations inspired by ng-annotate.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "rollup -c rollup.config.js",
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,6 @@
     "should": "^11.1.1"
   },
   "dependencies": {
-    "ng-annotate": "^1.2.1",
     "rollup-pluginutils": "^1.5.2"
   }
 }
