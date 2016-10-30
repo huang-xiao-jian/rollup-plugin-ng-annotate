@@ -6,10 +6,7 @@ export default {
     babel()
   ],
   external: [
-    'path',
-    'fs',
-    'rollup-pluginutils',
-    'lodash'
+    'rollup-pluginutils'
   ],
   globals: {},
   targets: [

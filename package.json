@@ -2,7 +2,7 @@
   "name": "rollup-plugin-ng-annotate",
   "version": "0.1.0",
   "description": "adds and removes AngularJS dependency injection annotations based on ng-annotate.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,9 +23,11 @@
   "devDependencies": {
     "babel-preset-es2015-rollup": "^1.2.0",
     "eslint": "^3.9.0",
+    "mocha": "^3.1.2",
     "rollup": "^0.36.3",
     "rollup-plugin-babel": "^2.6.1",
-    "rollup-watch": "^2.5.0"
+    "rollup-watch": "^2.5.0",
+    "should": "^11.1.1"
   },
   "dependencies": {
     "ng-annotate": "^1.2.1",
