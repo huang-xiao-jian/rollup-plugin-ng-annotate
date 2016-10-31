@@ -6,9 +6,11 @@ export default {
     babel()
   ],
   external: [
+    'lodash',
     'rollup-pluginutils'
   ],
   globals: {},
+  sourceMap: 'inline',
   targets: [
     {format: 'cjs', dest: 'dist/index.js'}
   ]
