@@ -5,9 +5,10 @@
 'use strict';
 
 const templateRegMatch = /\/\*\s*@ngInject\s*\*\/\s*function\s+([a-zA-Z]+)\(([^\)]*)\)/gm;
+const classRegMatch = /\/\*\s*@ngInject\s*\*\/\s*\n\s+constructor\s*\(([^\)]*)\)/g;
 
 /**
- * @description - analyze annotate refs from source code
+ * @description - analyze annotate refs from source code: function declare
  *
  * @param {string} template
  * @returns {Array.<AnnotateRef>}
@@ -33,5 +34,32 @@ export function analyzeAnnotateRef(template) {
     ngAnnotateRefs.push(result);
   }
   
+  return ngAnnotateRefs;
+}
+
+/**
+ * @description
+ * - analyze annotate refs from source code: class controller declare
+ * - only single class specific ES6 module
+ *
+ * @param {string} template
+ * @returns {AnnotateRef}
+ */
+export function analyzeClassAnnotateRef(template) {
+  let middleware;
+  let ngAnnotateRefs = {};
+
+  // eslint-disable-next-line no-cond-assign
+  if (middleware = classRegMatch.exec(template)) {
+    let [, deps] = middleware;
+
+    if (deps) {
+      ngAnnotateRefs.hasDeps = true;
+      ngAnnotateRefs.deps = deps;
+    } else {
+      ngAnnotateRefs.hasDeps = false;
+    }
+  }
+
   return ngAnnotateRefs;
 }

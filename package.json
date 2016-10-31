@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/bornkiller/rollup-plugin-ng-annotate#readme",
   "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.18.0",
     "babel-preset-es2015-rollup": "^1.2.0",
     "eslint": "^3.9.0",
     "mocha": "^3.1.2",
@@ -31,6 +32,7 @@
     "should": "^11.1.1"
   },
   "dependencies": {
+    "lodash": "^4.16.4",
     "rollup-pluginutils": "^1.5.2"
   }
 }
