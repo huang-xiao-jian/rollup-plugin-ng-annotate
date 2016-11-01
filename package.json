@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-ng-annotate",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "adds and removes AngularJS dependency injection annotations inspired by ng-annotate.",
   "main": "dist/index.js",
   "scripts": {
