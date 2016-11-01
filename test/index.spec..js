@@ -39,7 +39,7 @@ describe('should annotate javascript source code', function () {
       entry: 'fixture/redux.controller.js',
       plugins: [
         ngAnnotate(),
-        babel({babelrc: false, presets: ['es2015-bk'], plugins: ["transform-class-properties"]})
+        babel()
       ]
     };
     let expectation = `OrderController.$inject = ['$ngRedux', '$scope', '$stateParams', 'taskActions'];`;
