@@ -23,12 +23,10 @@ function flattenAnnotateRefs(dependency) {
 }
 
 /**
- * @description - translate dependency from Array.<string> into string
+ * @description - translate dependency from Array.<string> into string, make sure dependency not empty
  *
  * @param {Array.<string>} dependency
  */
 function translateAnnotateRefs(dependency) {
-  return dependency.reduce((prev, current) => {
-    return `'${prev}', '${current}'`;
-  });
+  return dependency.map(item => `'${item}'`).join(', ')
 }
