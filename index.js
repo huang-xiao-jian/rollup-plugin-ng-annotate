@@ -4,41 +4,29 @@
  */
 'use strict';
 
-import { isEmpty } from 'lodash';
-import { createFilter } from 'rollup-pluginutils';
-import { analyzeAnnotateRef, analyzeClassAnnotateRef } from './src/parse';
-import { replyAnnotateRef, replayClassAnnotateRef } from './src/reply';
+const { createFilter } = require('rollup-pluginutils');
+const { analyzeExplicitReference, analyzeImplicitReference } = require('./src/analyze');
+const { annotateDependencyInjection } = require('./src/engine');
 
-export default function annotate(opts = {}) {
+module.exports = annotate;
+
+function annotate(opts = {}) {
   const filter = createFilter(opts.include, opts.exclude);
 
   return {
     name: 'ng-annotate',
     transform(code, id) {
       if (filter(id)) {
+        let ngAnnotateRefs;
         let ngAnnotateCode;
-        let ngAnnotateRefs = analyzeAnnotateRef(code);
-        let ngAnnotateClassRef = analyzeClassAnnotateRef(code);
-
         // 为函数声明添加 strict-di 标记内容
-        if (!isEmpty(ngAnnotateRefs)) {
-          ngAnnotateCode = replyAnnotateRef(ngAnnotateRefs);
+        ngAnnotateRefs = [...analyzeExplicitReference(code), ...analyzeImplicitReference(code)];
+        ngAnnotateCode = annotateDependencyInjection(ngAnnotateRefs);
 
-          return {
-            code: `${ngAnnotateCode}\n${code}`,
-            map: {mappings: ''}
-          };
-        }
-
-        // 为 class controller 声明添加 strict-di 标记内容
-        if (!isEmpty(ngAnnotateClassRef)) {
-          ngAnnotateCode = replayClassAnnotateRef(ngAnnotateClassRef, code);
-
-          return {
-            code: ngAnnotateCode,
-            map: {mappings: ''}
-          };
-        }
+        return {
+          code: ngAnnotateCode ? `${code} \n ${ngAnnotateCode}` : code,
+          map: {mappings: ''}
+        };
       }
     }
   };

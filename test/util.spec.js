@@ -7,7 +7,7 @@
 const should = require('should');
 const { flattenAnnotateRefs, translateAnnotateRefs } = require('../src/util');
 
-describe.only('rollup-plugin-ng-annotate util', function () {
+describe('rollup-plugin-ng-annotate util', function () {
   it('should flatten dependency', function () {
     flattenAnnotateRefs('').should.eql([]);
     flattenAnnotateRefs(' $http, $injector ').should.eql(['$http', '$injector']);
