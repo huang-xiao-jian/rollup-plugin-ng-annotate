@@ -6,7 +6,8 @@
 'use strict';
 
 module.exports = {
-  flattenAnnotateRefs
+  flattenAnnotateRefs,
+  translateAnnotateRefs
 };
 
 /**
@@ -22,8 +23,12 @@ function flattenAnnotateRefs(dependency) {
 }
 
 /**
- * @description - translate dependency from Array.<AnnotateRef> into string
+ * @description - translate dependency from Array.<string> into string
  *
- * @param {Array.<AnnotateRef>} annotateRefs
+ * @param {Array.<string>} dependency
  */
-function translateAnnotateRefs(annotateRefs) {}
+function translateAnnotateRefs(dependency) {
+  return dependency.reduce((prev, current) => {
+    return `'${prev}', '${current}'`;
+  });
+}
