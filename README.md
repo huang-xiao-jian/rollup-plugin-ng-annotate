@@ -51,7 +51,7 @@ export class ReduxAssistController {
 ```
 
 ## attention
-It works find in personal project, if any problem occure, just issue me.
+It works fine in personal project, if any problem occur, just issue me.
 
 ## license
 MIT
