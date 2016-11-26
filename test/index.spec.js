@@ -13,7 +13,7 @@ const ngAnnotate = require('../');
 process.chdir('test');
 
 // maybe rollup dependency tree directory
-describe.only('rollup-plugin-ng-annotate', function () {
+describe('rollup-plugin-ng-annotate', function () {
   it('should annotate source code', function () {
     let options = {
       entry: 'fixture/hmr.demo.js',
@@ -32,9 +32,7 @@ describe.only('rollup-plugin-ng-annotate', function () {
         ReduxAssistController: `ReduxAssistController.$inject = ['$injector', '$http'];`,
         ReduxCoreController: `ReduxCoreController.$inject = ['$ngRedux', '$scope', '$stateParams', 'taskActions'];`
       };
-
-      console.log(code);
-
+      
       code.includes(strictDI.HMRProvider).should.be.true();
       code.includes(strictDI.HMRStateProvider).should.be.true();
       code.includes(strictDI.ReduxAssistController).should.be.true();
