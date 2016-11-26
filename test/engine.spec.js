@@ -7,7 +7,7 @@
 const should = require('should');
 const { annotateDependencyInjection } = require('../src/engine');
 
-describe('rollup-plugin-ng-annotate util', function () {
+describe('rollup-plugin-ng-annotate engine', function () {
   it('should annotate empty refs', function () {
     annotateDependencyInjection([]).should.be.false();
   });

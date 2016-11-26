@@ -42,6 +42,8 @@ jspm_packages
 .babelrc
 .eslintignore
 .eslintrc.yml
-karma.*.js
-rollup.*.js
-/test/*.bundle.js
+.gitignore
+.travis.yml
+
+# Test
+test

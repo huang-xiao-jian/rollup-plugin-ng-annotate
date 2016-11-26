@@ -10,7 +10,7 @@ const should = require('should');
 const { analyzeExplicitReference, analyzeImplicitReference } = require('../src/analyze');
 const options = {encoding: 'utf8'};
 
-describe('rollup-plugin-ng-annotate analyze implement', function () {
+describe('rollup-plugin-ng-annotate analyze', function () {
   it('should analyze function declare', function () {
     let template = fs.readFileSync(path.resolve(__dirname, 'fixture', 'hmr.provider.js'), options);
     let [$hmr, $state] = analyzeExplicitReference(template);
