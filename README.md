@@ -4,23 +4,17 @@
 ![Package Dependency](https://david-dm.org/bornkiller/rollup-plugin-ng-annotate.svg?style=flat)
 ![Package DevDependency](https://david-dm.org/bornkiller/rollup-plugin-ng-annotate/dev-status.svg?style=flat)
 
-Add AngularJS dependency injection annotations inspired by ng-annotate. 
+Add AngularJS dependency injection annotations inspired by ng-annotate.
+ 
+## Deprecated
+ng-annotate with regular expression smell bad, just use [babel-plugin-angularjs-annotate](https://www.npmjs.com/package/babel-plugin-angularjs-annotate). 
 
 ## Usage
-~~Extreme limitation to use the plugin, add annotation like below, and need `babel-plugin-transform-class-properties` support。~~
+just config your `.babelrc` below: 
 
-```json
-{
-  presets: ['es2015-rollup'],
-  plugins: ["transform-class-properties"]
-}
 ```
-
-since `0.3.0`, I adjust the DI solution, because `Class` are transformed into normal function, class static property not used any more while `babel-plugin-transform-class-properties` unnecessary, so just config your `.babelrc` below: 
-
-```json
 {
-  presets: ['es2015-rollup']
+  presets: ['env']
 }
 ```
 
@@ -50,7 +44,7 @@ export class ReduxAssistController {
 }
 ```
 
-## attention
+## Attention
 It works fine in personal project, if any problem occur, just issue me.
 
 ## license
